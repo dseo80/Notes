@@ -1,3 +1,16 @@
+LL
+6L Chest - RS-MinD-LPen-SpEcho-Chain-GMP
+4L Helm - RZ/AG/CG/Vital
+4L Gloves - CWDT/PR/IC-ID
+4L Boots - COH/FS/C1/C2
+3L Weapon - Conv/FD/VD
+3L Shield - Wrath/Grace/Disc
+1L Ring - POF
+1L Ring - POL
+
+
+
+
 Hybrid
 6L Chest - RS-MinD-LPen-SpEcho-Chain-GMP
 4L Helm - RZ/AG/CG/Fort
@@ -7,38 +20,3 @@ Hybrid
 3L Shield - Conv/FD-FC
 1L Ring - Disc
 1L Ring - Wrath
-
-LL
-6L Chest - RS-MinD-LPen-SpEcho-Chain-GMP
-4L Helm - RZ/AG/CG/VD
-4L Gloves - CWDT/PR/IC-ID
-4L Boots - COH/FS/C1/C2
-3L Weapon - Conv/FD/Vital
-3L Shield - Wrath/Grace/Disc
-1L Ring - POF
-1L Ring - POL
-
-
-	P	S	Be	Ch	Gl	H	R1	R2	Amu	Tr			Tgt
-F	57	37	0	0	29	0	15	12	0		150	24	174
-C	0	37	32	0	0	26	51	34			180	-6	174
-L	57	37	20	35	0	0	15	12			176	-1	175
-Ch	0	0	25	0	30	27	0	21	0	0	103	32	135
-	114	111	89.5	35	74	66.5	81	89.5		0	506		
-						*		*					
-													
-	STR	DEX											
-155	61	71											
-													
-													
-													
-	P	S	Be	Ch	Gl	H	R1	R2	Amu	Tr			Tgt
-F	0	27	0	0	29	0	15	0	32	33	136	-1	135
-C	0	0	32	0	0	26	51	0	0	43	152	-17	135
-L	0	0	20	40	0	0	15	35	0	34	144	-8	136
-Ch	0	0	25	6	30	27	0	28	11	20	147	-12	135
-	0	27	89.5	49	74	66.5	81	77	48.5	140	432		
-													
-													
-	STR	DEX											
-111	27	57											
