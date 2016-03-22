@@ -1,0 +1,57 @@
+
+  <CheatEntries>
+    <CheatEntry>
+      <ID>111</ID>
+      <Description>"Bypass"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : PathOfExile.exe
+  Version: 
+  Date   : 2016-03-22
+  Author : dseo
+
+  This script bypasses Anticheat checks by pretending to be WINE emulated - elyas's method
+}
+
+[ENABLE]
+
+aobscanmodule(BYPASS1,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
+aobscanmodule(BYPASS2,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
+aobscanmodule(BYPASS3,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
+
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+//alloc(mine,16)
+//registersymbol(mine)
+
+//mine:
+//dd (float)1.5
+
+newmem:
+
+BYPASS1:
+  nop
+  nop
+  
+registersymbol(INJECT)
+
+[DISABLE]
+
+BYPASS1:
+  db F3 0F 10 8F D4 17 00 00
+
+unregistersymbol(BYPASS1)
+dealloc(newmem)
+//dealloc(mine)
+//unregistersymbol(mine)
+
+
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+
+
