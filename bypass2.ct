@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="18">
 
   <CheatEntries>
     <CheatEntry>
@@ -16,33 +18,29 @@
 
 [ENABLE]
 
-aobscanmodule(BYPASS1,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
-aobscanmodule(BYPASS2,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
-aobscanmodule(BYPASS3,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
+aobscanmodule(_BYPASS1,PathOfExile.exe,74 03 32 C0 C3 E8) // should be unique
+//aobscanmodule(BYPASS2,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
+//aobscanmodule(BYPASS3,PathOfExile.exe,F3 0F 10 8F D4 17 00 00) // should be unique
 
-alloc(newmem,$1000)
-
-label(code)
-label(return)
+label(bypass1)
+//label(return)
 
 //alloc(mine,16)
-//registersymbol(mine)
+registersymbol(bypass1)
 
 //mine:
 //dd (float)1.5
 
-newmem:
-
-BYPASS1:
+_BYPASS1:
+bypass1:
   nop
   nop
   
-registersymbol(INJECT)
 
 [DISABLE]
 
-BYPASS1:
-  db F3 0F 10 8F D4 17 00 00
+bypass1:
+  db 74 03 32 C0 C3 E8
 
 unregistersymbol(BYPASS1)
 dealloc(newmem)
@@ -55,3 +53,334 @@ dealloc(newmem)
           </CheatEntries>
 
 
+
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"Zoom"</Description>
+      <LastState Activated="1"/>
+      <Color>80000008</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : PathOfExileSteam.exe
+  Version: 
+  Date   : 2015-12-12
+  Author : deama
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT,PathOfExile.exe,F3 0F 10 8F B4 17 00 00 8D) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+alloc(mine,16)
+registersymbol(mine)
+
+mine:
+dd (float)2.8
+
+newmem:
+
+code:
+  movss xmm1,[mine]
+  jmp return
+
+INJECT:
+  jmp code
+  nop
+  nop
+  nop
+return:
+registersymbol(INJECT)
+
+[DISABLE]
+
+INJECT:
+  db F3 0F 10 8F B4 17 00 00
+
+unregistersymbol(INJECT)
+dealloc(newmem)
+dealloc(mine)
+unregistersymbol(mine)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "PathOfExileSteam.exe"+22394C
+
+"PathOfExileSteam.exe"+223923: F3 0F 11 44 24 14        -  movss [esp+14],xmm0
+"PathOfExileSteam.exe"+223929: 8D 44 24 10              -  lea eax,[esp+10]
+"PathOfExileSteam.exe"+22392D: 77 04                    -  ja PathOfExileSteam.exe+223933
+"PathOfExileSteam.exe"+22392F: 8D 44 24 0C              -  lea eax,[esp+0C]
+"PathOfExileSteam.exe"+223933: F3 0F 10 08              -  movss xmm1,[eax]
+"PathOfExileSteam.exe"+223937: 0F 2F C8                 -  comiss xmm1,xmm0
+"PathOfExileSteam.exe"+22393A: 76 04                    -  jna PathOfExileSteam.exe+223940
+"PathOfExileSteam.exe"+22393C: 8D 44 24 14              -  lea eax,[esp+14]
+"PathOfExileSteam.exe"+223940: F3 0F 10 86 4C 18 00 00  -  movss xmm0,[esi+0000184C]
+"PathOfExileSteam.exe"+223948: F3 0F 58 00              -  addss xmm0,[eax]
+// ---------- INJECTING HERE ----------
+"PathOfExileSteam.exe"+22394C: F3 0F 10 8F 08 18 00 00  -  movss [esi+0000184C],xmm0
+// ---------- DONE INJECTING  ----------
+"PathOfExileSteam.exe"+223954: F3 0F 10 0D 04 87 75 01  -  movss xmm1,[PathOfExileSteam.exe+9D8704]
+"PathOfExileSteam.exe"+22395C: F3 0F 10 15 08 87 75 01  -  movss xmm2,[PathOfExileSteam.exe+9D8708]
+"PathOfExileSteam.exe"+223964: F3 0F 10 1D 0C 87 75 01  -  movss xmm3,[PathOfExileSteam.exe+9D870C]
+"PathOfExileSteam.exe"+22396C: 0F 28 E1                 -  movaps xmm4,xmm1
+"PathOfExileSteam.exe"+22396F: F3 0F 59 25 D8 BF 5E 01  -  mulss xmm4,[PathOfExileSteam.exe+86BFD8]
+"PathOfExileSteam.exe"+223977: F3 0F 5C CC              -  subss xmm1,xmm4
+"PathOfExileSteam.exe"+22397B: F3 0F 59 C8              -  mulss xmm1,xmm0
+"PathOfExileSteam.exe"+22397F: F3 0F 58 CC              -  addss xmm1,xmm4
+"PathOfExileSteam.exe"+223983: F3 0F 11 4C 24 30        -  movss [esp+30],xmm1
+"PathOfExileSteam.exe"+223989: F3 0F 10 0D FC BF 5E 01  -  movss xmm1,[PathOfExileSteam.exe+86BFFC]
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"zoom value"</Description>
+          <LastState Value="3" Activated="0" RealAddress="076A1000"/>
+          <Color>80000008</Color>
+          <VariableType>Float</VariableType>
+          <Address>mine</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>33</ID>
+          <Description>"Bright"</Description>
+          <Options moBindActivation="1"/>
+          <LastState Activated="0"/>
+          <Color>80000008</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : PathOfExileSteam.exe
+  Version: 
+  Date   : 2016-03-14
+  Author : deama
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(BRIGHT,PathOfExile.exe,0F 11 40 10 C7 45 A8 00 00 00 00) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+alloc(mine3,16)
+registersymbol(mine3)
+
+newmem:
+//0.15 - 0.17 - 0.18 - 1430.00
+
+mine3:
+dd (float)2 //red
+mine3+04:
+dd (float)2 //green
+mine3+08:
+dd (float)2 //blue
+mine3+0C:
+dd (float)1500 //intensity
+
+code:
+movups [eax+10],xmm0
+
+mov [eax+1C],(float)0.6
+mov [edi+68],(float)-1
+
+    push eax
+mov eax,[mine3]
+mov [edi+70],eax //red
+
+mov eax,[mine3+04]
+mov [edi+74],eax //green
+
+mov eax,[mine3+08]
+mov [edi+78],eax //blue
+
+mov eax,[mine3+0C]
+mov [edi+7C],eax //intensity
+    pop eax
+
+mov [ebp-58],00000000
+jmp return
+
+BRIGHT:
+  jmp code
+  nop
+  nop
+  nop
+  nop
+  nop
+  nop
+return:
+registersymbol(BRIGHT)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+BRIGHT:
+  db 0F 11 40 10 C7 45 A8 00 00 00 00
+
+unregistersymbol(BRIGHT)
+dealloc(newmem)
+dealloc(mine3)
+unregistersymbol(mine3)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "PathOfExileSteam.exe"+56F2F2
+
+"PathOfExileSteam.exe"+56F2C1: 0F 10 85 34 FF FF FF     -  movups xmm0,[ebp-000000CC]
+"PathOfExileSteam.exe"+56F2C8: 8D 87 84 00 00 00        -  lea eax,[edi+00000084]
+"PathOfExileSteam.exe"+56F2CE: C7 45 C0 00 00 00 00     -  mov [ebp-40],00000000
+"PathOfExileSteam.exe"+56F2D5: 8D 4D 88                 -  lea ecx,[ebp-78]
+"PathOfExileSteam.exe"+56F2D8: C7 45 B4 00 00 00 00     -  mov [ebp-4C],00000000
+"PathOfExileSteam.exe"+56F2DF: 0F 11 00                 -  movups [eax],xmm0
+"PathOfExileSteam.exe"+56F2E2: 51                       -  push ecx
+"PathOfExileSteam.exe"+56F2E3: 0F 10 85 44 FF FF FF     -  movups xmm0,[ebp-000000BC]
+"PathOfExileSteam.exe"+56F2EA: 50                       -  push eax
+"PathOfExileSteam.exe"+56F2EB: C7 45 AC 00 00 00 00     -  mov [ebp-54],00000000
+// ---------- INJECTING HERE ----------
+"PathOfExileSteam.exe"+56F2F2: 0F 11 40 10              -  movups [eax+10],xmm0
+"PathOfExileSteam.exe"+56F2F6: C7 45 A8 00 00 00 00     -  mov [ebp-58],00000000
+// ---------- DONE INJECTING  ----------
+"PathOfExileSteam.exe"+56F2FD: 0F 10 85 54 FF FF FF     -  movups xmm0,[ebp-000000AC]
+"PathOfExileSteam.exe"+56F304: C7 45 A4 00 00 00 00     -  mov [ebp-5C],00000000
+"PathOfExileSteam.exe"+56F30B: C7 45 A0 00 00 00 00     -  mov [ebp-60],00000000
+"PathOfExileSteam.exe"+56F312: 0F 11 40 20              -  movups [eax+20],xmm0
+"PathOfExileSteam.exe"+56F316: C7 45 98 00 00 00 00     -  mov [ebp-68],00000000
+"PathOfExileSteam.exe"+56F31D: 0F 10 85 64 FF FF FF     -  movups xmm0,[ebp-0000009C]
+"PathOfExileSteam.exe"+56F324: C7 45 94 00 00 00 00     -  mov [ebp-6C],00000000
+"PathOfExileSteam.exe"+56F32B: C7 45 90 00 00 00 00     -  mov [ebp-70],00000000
+"PathOfExileSteam.exe"+56F332: 0F 11 40 30              -  movups [eax+30],xmm0
+"PathOfExileSteam.exe"+56F336: 8D 85 34 FF FF FF        -  lea eax,[ebp-000000CC]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"Red"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>mine3</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"Green"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>mine3+04</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"Blue"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>mine3+08</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>37</ID>
+              <Description>"Intensity"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>mine3+0C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>18</ID>
+              <Description>"Remove black things when zooming out"</Description>
+              <LastState Activated="0"/>
+              <Color>80000008</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : PathOfExileSteam.exe
+  Version: 
+  Date   : 2016-03-13
+  Author : deama
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+ 
+ 
+aobscanmodule(Rend,PathOfExile.exe,0F 11 41 20 0F 10 40 30 8D 44 24 28 50 0F 11 41 30 FF D6) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+alloc(mine2,16)
+registersymbol(mine2)
+
+newmem:
+
+code:
+//mov [ecx+8],(float)1
+//mov [ecx+0C],(float)1
+
+mov [ecx+28],(float)1.02
+mov [ecx+2C],(float)1
+movups xmm0,[eax+30]
+jmp return
+
+Rend:
+  jmp code
+  nop
+  nop
+  nop
+return:
+registersymbol(Rend)
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+Rend:
+  db 0F 11 41 20 0F 10 40 30
+
+unregistersymbol(Rend)
+dealloc(newmem)
+dealloc(mine2)
+unregistersymbol(mine2)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "PathOfExileSteam.exe"+56B798
+
+"PathOfExileSteam.exe"+56B775: 52                       -  push edx
+"PathOfExileSteam.exe"+56B776: 0F 10 43 20              -  movups xmm0,[ebx+20]
+"PathOfExileSteam.exe"+56B77A: 0F 11 42 20              -  movups [edx+20],xmm0
+"PathOfExileSteam.exe"+56B77E: 0F 10 43 30              -  movups xmm0,[ebx+30]
+"PathOfExileSteam.exe"+56B782: 0F 11 42 30              -  movups [edx+30],xmm0
+"PathOfExileSteam.exe"+56B786: 0F 10 00                 -  movups xmm0,[eax]
+"PathOfExileSteam.exe"+56B789: 0F 11 01                 -  movups [ecx],xmm0
+"PathOfExileSteam.exe"+56B78C: 0F 10 40 10              -  movups xmm0,[eax+10]
+"PathOfExileSteam.exe"+56B790: 0F 11 41 10              -  movups [ecx+10],xmm0
+"PathOfExileSteam.exe"+56B794: 0F 10 40 20              -  movups xmm0,[eax+20]
+// ---------- INJECTING HERE ----------
+"PathOfExileSteam.exe"+56B798: 0F 11 41 20              -  movups [ecx+20],xmm0
+"PathOfExileSteam.exe"+56B79C: 0F 10 40 30              -  movups xmm0,[eax+30]
+// ---------- DONE INJECTING  ----------
+"PathOfExileSteam.exe"+56B7A0: 8D 44 24 28              -  lea eax,[esp+28]
+"PathOfExileSteam.exe"+56B7A4: 50                       -  push eax
+"PathOfExileSteam.exe"+56B7A5: 0F 11 41 30              -  movups [ecx+30],xmm0
+"PathOfExileSteam.exe"+56B7A9: FF D6                    -  call esi
+"PathOfExileSteam.exe"+56B7AB: 0F 10 44 24 20           -  movups xmm0,[esp+20]
+"PathOfExileSteam.exe"+56B7B0: 8B 84 24 4C 01 00 00     -  mov eax,[esp+0000014C]
+"PathOfExileSteam.exe"+56B7B7: 8D BD B0 00 00 00        -  lea edi,[ebp+000000B0]
+"PathOfExileSteam.exe"+56B7BD: C7 44 24 1C 00 00 00 00  -  mov [esp+1C],00000000
+"PathOfExileSteam.exe"+56B7C5: 8D 4C 24 60              -  lea ecx,[esp+60]
+"PathOfExileSteam.exe"+56B7C9: 0F 11 07                 -  movups [edi],xmm0
+}
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+</CheatTable>
