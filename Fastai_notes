@@ -1,0 +1,63 @@
+Lesson1
+
+-datasets used to train - verification sets also included to test (usually or made by fast-ai)
+labels
+training
+models
+weights
+
+
+never want a model where train loss  >  valid(ation) loss
+all good models have train less < valid loss
+not enough fit
+
+too few epochs ~ low learning rate
+
+too many epochs - overfitting
+error rates improves for a while then goes up again
+
+
+Main 4 things that can go wrong!
+too high LR (train loss > valid loss)
+too low LR
+too low epoch (similar effect to low LR)
+too high epoch (overfit)
++1 more thing that can go wrong
+not enough data => learning rate is good. but error rates goes up (overfit). but accuracy is still not high enough.
+-> howtosolve? more data + others
+no shortcut to know how much data is needed
+normally needs alot less than we think we need
+
+metrics= applied to validation sets (best methods - check data on things model have not seen)
+
+Pytorch
+x = torch.ones(n,2)
+x is a rank 2 tensor (2 variables passed), with n rows and 2 columns (every value is filled by 1 - torch.ones)
+x[:,0].uniform_(-1.,1) - the "." after -1 indicates the values in whole thing is float
+[] index. ":" means every single value on that dimension/axis so ":,0" means every row of column 0
+uniform: grab a uniform random number between (arg1,arg2)
+_ : dont return but replace whatever called it
+
+y = x@a + torch.rand(n)
+
+Stochastic Gradient Descent
+-Stochastic - Minibatches (random sampling of variables)
+
+Epoch - all minibatches completed
+Model/Architecture : mathematical function used to fit (ex: polynomial fit)
+
+
+------------------------------------------------------------
+something trained bad on purpose then trained well is worse? than something trained just well?
+how well does AI train if i purposely introduce a forced recognition (like otter + nyanotter)?
+
+------------------------------------------------------------
+python slicing syntax
+Andrew Ng - Coursera
+
+Classes
+DataSets
+DataLoader
+DataBunch
+
+Segmentation Data Sets
